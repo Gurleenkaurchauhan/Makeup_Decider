@@ -1,0 +1,184 @@
+:root{
+  --bg1:#ffe3ee;--bg2:#fff1f7;--card:#fffafd;--ink:#6b2447;--mute:#b0698c;
+  --line:#ffc4dc;--pink:#ffa8cb;--pink2:#ffc7de;--deep:#e0558f;--btn-ink:#7a1648;--soft:#ffeaf3;
+  --shadow:0 10px 26px rgba(255,150,195,.35);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:500 16px/1.55 "Quicksand","Segoe UI",system-ui,sans-serif;min-height:100vh;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2) 60%,var(--bg1));background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Ctext x='20' y='60' font-size='42'%3E%F0%9F%A7%B8%3C/text%3E%3Ctext x='150' y='120' font-size='36'%3E%F0%9F%8E%80%3C/text%3E%3Ctext x='40' y='170' font-size='38'%3E%F0%9F%90%B0%3C/text%3E%3Ctext x='160' y='230' font-size='40'%3E%E2%98%81%EF%B8%8F%3C/text%3E%3Ctext x='95' y='235' font-size='30'%3E%F0%9F%A6%84%3C/text%3E%3C/svg%3E");
+  background-size:260px 260px}
+main{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:26px 16px 60px}
+.floaties span{position:fixed;z-index:0;font-size:2.4rem;opacity:.75;pointer-events:none;left:calc(var(--i)*10% - 2%);top:calc(10% + (var(--i)*37)%);animation:floaty 6s ease-in-out infinite;animation-delay:calc(var(--i)*-.7s)}
+.floaties span:nth-child(odd){top:auto;bottom:calc(4% + (var(--i)*13)%)}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+h1{font:400 clamp(2.1rem,7vw,3.4rem)/1.15 "Pacifico",cursive;margin:0 0 6px;text-align:center;
+  background:linear-gradient(90deg,#f0629b,#ff8fb8,#ffa78f);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 0 #fff)}
+h2,h3{font-family:"Fredoka","Quicksand",sans-serif;font-weight:600;color:var(--deep);margin:0 0 8px}
+.tagline{text-align:center;margin:0 0 6px}
+.muted{color:var(--mute)}
+button{font:600 1rem "Fredoka","Quicksand",sans-serif;cursor:pointer;border:0;border-bottom:4px solid #ec78ab;border-radius:999px;padding:9px 22px 7px;color:var(--btn-ink);
+  background:linear-gradient(180deg,#ffd0e3,var(--pink));box-shadow:0 5px 12px rgba(236,120,171,.3);transition:transform .12s,border-bottom-width .12s}
+button:hover:not(:disabled){transform:translateY(-2px)}
+button:active:not(:disabled){transform:translateY(3px);border-bottom-width:1px}
+button:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+button:focus-visible,input:focus-visible{outline:3px solid var(--deep);outline-offset:2px}
+button.ghost{background:var(--card);border:2px solid var(--pink);border-bottom-width:4px}
+button.link{background:none;border:0;color:var(--deep);box-shadow:none;padding:2px 8px;font-weight:600;text-decoration:underline}
+button.link:hover:not(:disabled){transform:none;color:#f0629b}
+button.big{display:block;margin:24px auto;padding:15px 52px 12px;font-size:1.5rem;letter-spacing:.04em;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0;justify-content:center}
+.tabs button{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;box-shadow:none;color:var(--deep)}
+.tabs button.on{background:linear-gradient(180deg,#ffd0e3,var(--pink));border-color:#ec78ab;color:var(--btn-ink);box-shadow:var(--shadow)}
+.wheels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px}
+.wheel-card,.combo,.stats div{position:relative;background:var(--card);border:3px solid var(--line);border-radius:32px;box-shadow:var(--shadow)}
+.wheel-card::after,.combo::after{content:"";position:absolute;inset:7px;border:2px dashed #ffb6d3;border-radius:26px;pointer-events:none}
+.wheel-card{padding:20px 18px 18px;text-align:center}
+.wheel-card.spinning{animation:wiggle .5s ease-in-out infinite}
+@keyframes wiggle{25%{transform:rotate(-.6deg)}75%{transform:rotate(.6deg)}}
+.wheel-card h3{font-size:1.5rem}
+.wheel-card h3::before{content:"🌸 "}
+.wheel-card h3::after{content:" 🌸"}
+.wheel-wrap{position:relative;width:min(100%,360px);margin:10px auto 14px;padding:10px;border-radius:50%;
+  background:repeating-conic-gradient(#ffb3d1 0 12deg,#fff 12deg 24deg);box-shadow:0 8px 20px rgba(255,130,180,.45),inset 0 0 0 4px #fff}
+.wheel{aspect-ratio:1;will-change:transform;border-radius:50%;background:#fff}
+.wheel svg{width:100%;height:100%;display:block}
+.pointer{position:absolute;top:-16px;left:50%;transform:translateX(-50%);z-index:3;border:14px solid transparent;border-top:26px solid #f0629b;border-bottom:0;filter:drop-shadow(0 3px 0 #fff)}
+.empty{padding:60px 8px}
+.confetti{position:absolute;inset:0;pointer-events:none;z-index:4}
+.confetti span{position:absolute;left:50%;top:50%;font-size:1.5rem;opacity:0;animation:burst 1.1s ease-out forwards}
+@keyframes burst{0%{opacity:1;transform:translate(-50%,-50%) scale(.4)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--r)) scale(1.3)}}
+.result{min-height:34px;margin:8px 0 10px;font:600 1.15rem "Fredoka",sans-serif}
+.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.row{display:flex;gap:14px;justify-content:center;align-items:center}
+.row button{font-size:1.25rem;padding:10px 34px 8px}
+.lock{font-size:.95rem;color:var(--mute);font-weight:600}
+input[type=checkbox]{accent-color:#f0629b;width:19px;height:19px}
+.dot{display:inline-block;width:17px;height:17px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);vertical-align:-3px}
+.combo{padding:20px;margin-top:20px}
+.combo h2{font-size:1.5rem}
+.combo h2::after{content:" 💖"}
+.combo ol{padding-left:20px;margin:0 0 12px}
+.combo ol li{margin:7px 0}
+.add{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.add input:not([type]),.add input[type=text]{flex:1;min-width:180px;padding:10px 16px;border:2px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit}
+.add input[type=color]{width:50px;height:44px;border:2px solid var(--line);border-radius:14px;background:var(--card);padding:2px;cursor:pointer}
+.plist{list-style:none;padding:0;margin:0 0 12px}
+.plist li{padding:8px 4px;border-bottom:2px dotted var(--line)}
+.usedbox{display:flex;align-items:center;gap:8px;cursor:pointer;flex-wrap:wrap}
+.small{font-size:.9rem;margin:0 0 12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.stats div{padding:14px 16px;display:flex;flex-direction:column}
+.stats b{font:600 1.4rem "Fredoka",sans-serif;color:var(--deep)}
+.urow{display:grid;grid-template-columns:minmax(120px,1.2fr) 2fr minmax(110px,1fr);gap:10px;align-items:center;padding:6px 0}
+.bar{height:14px;background:var(--soft);border-radius:8px;overflow:hidden;display:block;border:2px solid var(--line)}
+.bar i{display:block;height:100%}
+.unum{font-size:.88rem;text-align:right}
+@media (max-width:520px){.urow{grid-template-columns:1fr}.unum{text-align:left}.floaties span{font-size:1.8rem}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.datepick{display:inline-flex;align-items:center;gap:8px;font-weight:600;margin:4px 0 2px;flex-wrap:wrap}
+.datepick input{padding:8px 12px;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:inherit}
+.calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.calhead h3{margin:0}
+.calhead button{padding:4px 16px 2px;font-size:1.4rem}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.dow{text-align:center;color:var(--mute);font:600 .85rem "Fredoka",sans-serif}
+.calgrid .day{aspect-ratio:1;padding:0;border-radius:14px;border:2px solid var(--line);background:var(--card);box-shadow:none;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.95rem}
+.calgrid .day:active:not(:disabled){border-bottom-width:2px;transform:none}
+.day.has{background:var(--soft);border-color:var(--pink)}
+.day.sel{background:linear-gradient(180deg,#ffd0e3,var(--pink));border-color:#ec78ab}
+.day i{font-style:normal;font-size:.75rem;line-height:1}
+.daylist{margin-top:14px;border-top:2px dotted var(--line);padding-top:10px}
+.day.today{outline:3px solid var(--deep);outline-offset:1px;font-weight:700}
+@media (min-width:521px){.urow{grid-template-columns:minmax(120px,1.2fr) 2fr minmax(210px,1.5fr)}}
+.choose{display:flex;flex-direction:column;gap:4px;margin:0 0 12px;font-size:.9rem;font-weight:600;color:var(--mute);text-align:left}
+.choose select{padding:9px 12px;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;width:100%;cursor:pointer}
+.choose select:focus-visible{outline:3px solid var(--deep);outline-offset:2px}
+
+/* ---- sidebar layout ---- */
+.app{position:relative;z-index:1;display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+.app main{width:100%}
+.side{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:18px 14px;background:rgba(255,250,253,.92);border-right:3px solid var(--line);display:flex;flex-direction:column;z-index:5}
+.me{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:8px;word-break:break-all}
+.av{font-size:3.2rem;line-height:1.1}
+.navh{margin:14px 6px 2px;font:600 .78rem "Fredoka",sans-serif;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.side nav button{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--line);border-bottom-width:4px;box-shadow:none;color:var(--deep);margin:5px 0}
+.side nav button.on{background:linear-gradient(180deg,#ffd0e3,var(--pink));border-color:#ec78ab;color:var(--btn-ink)}
+.side .out{margin-top:auto}
+.menu{display:none;margin:0 0 6px}
+.scrim{display:none}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .menu{display:block}
+  .side{position:fixed;inset:0 auto 0 0;width:270px;height:100%;transform:translateX(-105%);transition:transform .25s;z-index:30}
+  .app.open .side{transform:none;box-shadow:0 0 40px rgba(0,0,0,.25)}
+  .scrim{display:block;position:fixed;inset:0;background:rgba(80,20,50,.35);z-index:20}
+}
+/* ---- auth, profile, customize ---- */
+.auth{position:relative;z-index:1;min-height:100vh;display:grid;place-items:center;padding:20px}
+.auth-card{width:100%;max-width:440px}
+.auth-card h1{font-size:2rem}
+.field{display:flex;flex-direction:column;gap:4px;margin:10px 0;font-weight:600;color:var(--mute)}
+.field input{padding:12px 16px;border:2px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit}
+.err{color:#c0225a;font-weight:600;margin:6px 0}
+.profhead{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.profhead .av{font-size:4rem}
+.avbtn{font-size:1.6rem;padding:6px 12px 4px;background:var(--card)}
+.avbtn.on{background:linear-gradient(180deg,#ffd0e3,var(--pink));border-color:#ec78ab}
+.palette{display:flex;gap:10px;flex-wrap:wrap}
+.palette span{width:52px;height:52px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--line),0 4px 10px rgba(255,130,180,.3)}
+.grow{border-top:2px dotted var(--line);padding-top:10px;margin-top:12px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{cursor:pointer}
+.opts input[type=checkbox]{margin-right:6px}
+.opts label span{display:inline-block;padding:6px 14px;border:2px solid var(--line);border-radius:999px;background:var(--card)}
+
+/* ---- wheel colour ---- */
+.wheel-card{background:color-mix(in srgb,var(--wc,#ffb3d1) 16%,#fffafd);border-color:var(--wc,#ffb3d1)}
+.wheel-card::after{border-color:color-mix(in srgb,var(--wc,#ffb3d1) 70%,#fff)}
+.wheel-wrap{background:repeating-conic-gradient(var(--wc,#ffb3d1) 0 12deg,#fff 12deg 24deg)}
+.cpick{width:38px;height:32px;border:2px solid var(--line);border-radius:10px;padding:1px;vertical-align:middle;background:var(--card);cursor:pointer}
+/* ---- password eye ---- */
+.pw{position:relative;display:block}
+.pw input{width:100%;padding-right:56px}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);padding:4px 10px;background:none;border:0;box-shadow:none;font-size:1.25rem;color:inherit}
+.eye:hover:not(:disabled),.eye:active:not(:disabled){transform:translateY(-50%);border-bottom-width:0}
+/* ---- sidebar toggle (open/close any time) ---- */
+.menu{display:flex!important;position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:12px;z-index:40;width:48px;height:48px;padding:0;margin:0;align-items:center;justify-content:center;font-size:1.4rem;border-radius:50%}
+.side{padding-top:72px}
+.app main{padding-top:72px}
+.app.shut{grid-template-columns:1fr}
+.app.shut .side{display:none}
+body{-webkit-tap-highlight-color:transparent}
+button,select,input{touch-action:manipulation}
+/* ---- home tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin-top:16px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:24px 16px 20px;border-radius:28px;background:var(--card);border:3px solid var(--line);border-bottom-width:7px;color:var(--ink);box-shadow:var(--shadow)}
+.tile:hover:not(:disabled){border-color:var(--pink)}
+.tile b{font:600 1.2rem "Fredoka",sans-serif;color:var(--deep)}
+.tile .muted{font-weight:500;font-size:.92rem}
+.te{font-size:2.8rem;line-height:1}
+/* ---- phone: drawer sidebar, roomy touch targets ---- */
+@media (max-width:860px){
+  .app .side{position:fixed;inset:0 auto 0 0;width:min(290px,84vw);height:100%;transform:translateX(-105%);transition:transform .25s;z-index:30;display:block;padding-top:72px}
+  .app:not(.shut) .side{transform:none;box-shadow:0 0 40px rgba(0,0,0,.25)}
+  .app main{padding:72px 12px calc(40px + env(safe-area-inset-bottom,0px))}
+  .side{padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+  .side nav button{padding:13px 18px 11px;font-size:1.05rem}
+  .tiles{grid-template-columns:1fr 1fr;gap:12px}
+  .tile{padding:18px 8px 14px}
+  .te{font-size:2.3rem}
+  h1{font-size:2rem}
+  .combo,.wheel-card{border-radius:26px}
+  .add input:not([type]),.add input[type=text],.field input,.datepick input,.choose select{font-size:16px}
+}
+@media (max-width:380px){.tiles{grid-template-columns:1fr}}
+
+.offline{text-align:center;background:var(--soft);border:2px dashed var(--pink);border-radius:999px;padding:6px 14px;font-weight:600;color:var(--deep);max-width:max-content;margin:6px auto}
+.install{max-width:520px;margin-left:auto;margin-right:auto;text-align:center}
